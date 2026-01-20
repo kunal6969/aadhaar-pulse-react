@@ -21,7 +21,6 @@ import {
   Map,
   Info,
   Calendar,
-  Globe,
   TrendingUp,
 } from 'lucide-react';
 import { useMemo, useState } from 'react';
