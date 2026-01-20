@@ -291,16 +291,10 @@ export default function Equity({ simulationDate }: EquityProps) {
 
   // Calculate mobile units recommended from API data
   const mobileUnitsCount = useMemo(() => {
-    // Use backend MBU recommendation count if available
-    const apiCount = underservedData?.mbu_recommendations?.total_recommended ||
-                     underservedData?.national?.mbu_recommended_total ||
-                     0;
-    if (apiCount > 0) return apiCount;
-    
     // Fallback: calculate from critical districts
     const criticalCount = topUnderservedDistricts.filter(d => d.underserved_score > 70).length;
     return Math.min(criticalCount + 5, 25);
-  }, [topUnderservedDistricts, underservedData]);
+  }, [topUnderservedDistricts]);
 
   return (
     <div className="space-y-6">
